@@ -79,8 +79,8 @@ require_relative '../models/address_book'
         puts "Enter the number of the entry you'd like to see"
         print "Entry Number: "
         number = gets.chomp #Along with line 80, gather user input
-        if (number.to_i > address_book.amount() || number.to_i <= 0)
-            puts "Invalid entry, please try again\n\n"
+        if (number.to_i > address_book.amount() || number.to_i <= 0) #if the entry number (as an integer) is greater than the amount of items in the entries array || less than/= 0 (since you can't have 0 entries)
+            puts "Invalid entry, please try again\n\n" #provide error
             return
         end
         puts answer = address_book.search(number) #return the answer
