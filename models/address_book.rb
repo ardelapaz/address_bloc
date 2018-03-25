@@ -5,6 +5,7 @@ class AddressBook
 
     def initialize
         @entries = []
+        specific = ''
     end
 
     def add_entry(name, phone_number, email)
@@ -30,5 +31,18 @@ class AddressBook
             end
         end
         entries.delete(deleted)
+    end
+
+    def search(number)
+        entries.each do |entry| #loop through the entries array
+            if number == entries.index #if the index desired matches the index in the array
+                specific = entry.to_s #assign a new variable to the entry's details (to_s)
+                puts specific #print the entries details to the console
+            end
+        end
+    end
+
+    def amount #determine how many elements in the array for invalid entry testing
+        entries.length
     end
 end
