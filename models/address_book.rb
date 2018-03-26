@@ -9,6 +9,8 @@ class AddressBook
         specific = ''
     end
 
+########################## -- ADD ENTRY -- ##########################
+
     def add_entry(name, phone_number, email)
         index = 0
         entries.each do |entry|
@@ -19,6 +21,8 @@ class AddressBook
         end
         entries.insert(index, Entry.new(name, phone_number, email))
     end
+
+########################## -- REMOVE ENTRY -- ##########################
 
     def remove_entry(name, phone_number, email) 
         deleted = nil
@@ -34,6 +38,8 @@ class AddressBook
         entries.delete(deleted)
     end
 
+########################## -- SEARCH FOR ENTRY NUMBER 'X' -- ##########################
+
     def search(number)
         entries.each do |entry| #loop through the entries array
             if number == entries.index #if the index desired matches the index in the array
@@ -43,9 +49,13 @@ class AddressBook
         end
     end
 
-    def amount #determine how many elements in the array for invalid entry testing
+    ########################## -- ADDRESS BOOK LENGTH  -- ##########################
+
+    def amount #determine how many elements in the array for invalid entry testing and cleaner code
         entries.length
     end
+
+########################## -- CSV IMPORT -- ##########################
 
     def import_from_csv(file_name)
         csv_text = File.read(file_name)
@@ -56,9 +66,43 @@ class AddressBook
         end
     end
 
+########################## -- BINARY SEASRCH -- ##########################
+
     def binary_search(name)
         
+        lower = 0
+        upper = entries.length - 1
+    
+        while lower <= upper
+          mid = (lower + upper) / 2
+          mid_name = entries[mid].name
+    
+          if name == mid_name
+            return entries[mid]
+          elsif name < mid_name
+            upper = mid - 1
+          elsif name > mid_name
+            lower = mid + 1
+          end
+        end
+        return nil
+    end
 
+########################## -- ITERATIVE SEASRCH -- ##########################
 
+    def iterative_search(name) 
+
+        iterative = 0
+        bookLength = entries.length - 1
+        
+        while iterative <= bookLength
+            it_name = entries[iterative].name
+
+            if name == it_name
+                return entries[iterative]
+            else
+                iterative +=1
+            end
+        end
     end
 end
