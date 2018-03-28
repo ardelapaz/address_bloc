@@ -94,7 +94,7 @@ class AddressBook
 
         iterative = 0
         bookLength = entries.length - 1
-        
+
         while iterative <= bookLength
             it_name = entries[iterative].name
 
