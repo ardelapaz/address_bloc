@@ -42,7 +42,8 @@ require_relative '../models/address_book'
        main_menu
       when 6
         system "clear"
-        deleteAll
+        @address_book.nuke
+        puts "All entries were cleared!"
         main_menu
      when 7
        puts "Good-bye!"
@@ -200,22 +201,4 @@ require_relative '../models/address_book'
             entry_submenu(entry)
         end
       end
-
-    def deleteAll()
-    puts "Are you sure you want to delete all entries? (y/n)"
-    answer = gets.chomp
-    if answer == 'y'
-      totalLength = address_book.entries.length
-      if totalLength > 0
-        loop = 0
-        while loop < totalLength
-          delete_entry(address_book.entries[0])
-          loop += 1
-        end
-      puts "All entries were cleared!"
-      end
-    else
-      puts "Whew! I thought you were going to do something you would regret!"
-    end
   end
-end

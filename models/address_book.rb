@@ -9,6 +9,10 @@ class AddressBook
         specific = ''
     end
 
+    def nuke
+        @entries = []
+    end
+
 ########################## -- ADD ENTRY -- ##########################
 
     def add_entry(name, phone_number, email)
